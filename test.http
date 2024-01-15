@@ -5,8 +5,8 @@ POST http://localhost:3000/posts
 Content-Type: application/json
 
 {
-  "title": "fifa 24",
-  "content": "not a good game"
+  "title": "rdr2",
+  "content": " good game"
 }
 
 ###Request2
@@ -26,11 +26,11 @@ Content-Type: application/json
 DELETE http://localhost:3000/posts/8
 
 ###request5
-GET http://localhost:3000/posts/limit/7/offset/8
+GET http://localhost:3000/posts/limit/5/offset/8
 
 
 ###request6
-GET http://localhost:3000/posts/search?title=laveine
+GET http://localhost:3000/posts/search?title=lebb
 
 
 
@@ -48,17 +48,17 @@ POST http://localhost:3000/comments
 Content-Type: application/json
 
 {
-  "postId": 12,
-  "text": "This is a  comment."
+  "postId": 16,
+  "text": "helloooo"
 }
 
 
 ###request3
-PUT http://localhost:3000/comments/3
+PUT http://localhost:3000/comments/5
 Content-Type: application/json
 
 {
-  "text": "Updated comment text"
+  "text": "letsgooo"
 }
 
 ###request4
