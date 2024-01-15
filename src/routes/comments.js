@@ -11,6 +11,11 @@ router.post('/', (req, res) => {
     return res.status(400).json({ error: 'Post ID and text are required' }); //check if postId and text are provided
   }
 
+  // Check if postId is integer and if text is a string
+  if (!Number.isInteger(postId) || typeof text !== 'string') {
+    return res.status(400).json({ error: 'postId is not int or text is not string' });
+  }
+
   //creaye function is called
   Comment.create(postId, text, (err, result) => {
     if (err) {
@@ -41,6 +46,10 @@ router.put('/:id', (req, res) => { //id of the to edit comment is given as a rou
 
   if (!text) {
     return res.status(400).json({ error: 'Text is required' });
+  }
+
+  if(typeof text !== "string"){
+    return res.status(400).json({error: "text is not string"});
   }
 
   const commentId = req.params.id;
