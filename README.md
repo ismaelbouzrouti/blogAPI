@@ -15,3 +15,6 @@
 
    - [Node.js Crash Course | Tech Endeavor](https://www.youtube.com/watch?v=DBFIp1kIqMs&ab_channel=TechEndeavor)
    - [Building a Simple Backend with Node.js, MySQL, Sequelize, and Express | Great Adib](https://www.youtube.com/watch?v=tpso18ghda4&ab_channel=GreatAdib)
+
+3. **GitHub Repo:**
+   - [BlogAPI repo](https://github.com/ismaelbouzrouti/blogAPI)
