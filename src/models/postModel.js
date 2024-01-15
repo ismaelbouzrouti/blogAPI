@@ -44,8 +44,35 @@ const Post = {
 
       //function to retrieve a post by title using a searchterm that the user gives
     searchByTitle: (title, callback) => {
-        const sql = 'SELECT * FROM posts WHERE title LIKE ?';
-        db.query(sql, [`%${title}%`], callback);
+
+        //first check if title exists in the db
+        const checkIfTitleExists = 'SELECT COUNT(*) AS count FROM posts WHERE title LIKE ?';
+        db.query(checkIfTitleExists,[`%${title}%`],(checkErr,result) => { //function with query, value and callback as parameters
+                
+            //checkErr(handles error) & result(handles result of query) -> parameters of callback
+
+            if (checkErr) {
+                return callback(checkErr, null);//if there is an error returns error and null result through callback
+            }
+
+            //if quey succesful
+            const postCount = result[0].count;//number of posts with the title
+    
+            if (postCount === 0) {
+                // No posts found with the given title
+                const error = new Error('No posts found with the given title');
+                return callback(error, null);
+            }
+
+            //if posts found with the given title "the official query" can continue
+            const sql = 'SELECT * FROM posts WHERE title LIKE ?';
+            db.query(sql, [`%${title}%`], callback);
+
+        });
+
+
+
+      
       },
 
 

@@ -10,6 +10,11 @@ router.post('/', (req, res) => {
     if (!title || !content) {
       return res.status(400).json({ error: 'Title and content are required' }); //check to see if title and content are given
     }
+
+    // Check if title & content are strings
+  if ( typeof title !== 'string' || typeof content !== 'string') {
+    return res.status(400).json({ error: 'postId is not int or text is not string' });
+  }
   
     //create function is called
     Post.create(title, content, (err, result) => {
@@ -41,6 +46,10 @@ router.post('/', (req, res) => {
     if (!title || !content) {
       return res.status(400).json({ error: 'Title and content are required' });
     }
+
+    if ( typeof title !== 'string' || typeof content !== 'string') {
+        return res.status(400).json({ error: 'postId is not int or text is not string' });
+      }
   
     const postId = req.params.id;
   
@@ -72,7 +81,7 @@ router.post('/', (req, res) => {
   router.get('/limit/:limit/offset/:offset', (req, res) => {
     const limit = parseInt(req.params.limit); //req.params. used to extract data from route parametrs wich are placeholders
     const offset = parseInt(req.params.offset); // parseInt to make sure the values are treated as integers
-  
+
     //getByLimitAndOffset is called
     Post.getByLimitAndOffset(limit, offset, (err, results) => {
       if (err) {
@@ -90,7 +99,18 @@ router.post('/', (req, res) => {
     if (!title) {
       return res.status(400).json({ error: 'Title parameter is required for search' });
     }
-  
+
+    //check if title is not just a number
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');//array of alphabet
+
+    const splitTitle = title.split('');//each character of title is an elemetn of the array
+
+    const isTitleValid = splitTitle.some(char => alphabet.includes(char.toLowerCase()))//checks if at least one character in the title is a letter 
+
+    if(!isTitleValid){
+        return res.status(400).json({ error: 'Title parameter cant be just a number' }); //function is not called if title doesnt contain a letter
+    }
+
     //searchByTitle function is called
     Post.searchByTitle(title, (err, results) => {
       if (err) {
