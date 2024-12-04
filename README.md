@@ -1,4 +1,33 @@
 # BlogAPI Documentation
+# BlogAPI
+
+The **BlogAPI** is a backend service built in Node.js that provides APIs for managing blog posts and comments. It is designed to support the creation, retrieval, and interaction with blog content, offering a scalable foundation for blog-based applications.
+
+## Features
+- **Post Management:**
+  - Create, retrieve, update, and delete blog posts.
+  
+- **Comment Management:**
+  - Add comments to posts.
+  - Retrieve comments associated with a specific post.
+
+- **Structured Data Models:**
+  - Use of defined models for posts and comments to ensure data consistency.
+
+## Tech Stack
+- **Backend:** Node.js (Express framework)
+- **Database:** Mysql
+
+## Objectives
+This project demonstrates:
+- RESTful API design for blog systems.
+- CRUD operations for both posts and comments.
+- A modular approach to backend development using routes and models.
+
+## Notes
+- This API provides core functionalities and can be extended with features like authentication, user roles, or advanced querying.
+- Designed as a backend service, it can be integrated with a frontend or mobile application for a complete blogging solution.
+
 
 1. **Resources:**
 
